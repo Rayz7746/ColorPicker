@@ -1,12 +1,26 @@
-# React + Vite
+# React Color Picker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive color picker application built with React that allows users to:
+- Select colors from a predefined palette
+- Choose custom colors using a color input
+- Automatically adjusts text color for optimal contrast
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React (Functional Components)
+- React Hooks (useState, useEffect)
+- CSS Modules
+- W3C Color Contrast Algorithm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How It Works
+
+The application uses the W3C color contrast algorithm to determine whether white or black text provides better contrast against the selected background color. The formula calculates the perceived brightness of the color:
+
+``` javascript
+brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+```
+
+- Values > 128 use black text (#333)
+
+- Values ≤ 128 use white text (#fff)
